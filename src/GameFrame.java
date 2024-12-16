@@ -4,8 +4,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class GameFrame extends JFrame {
-    final int windowSize = 500; // W = H
+    final int windowSize = 400; // W = H
     private static GameFrame singleton = null;
+    private int clickPositionX, clickPositionY;
+    public int getX(){ return clickPositionX; }
+    public int getY(){ return clickPositionY; }
     public static GameFrame init(){
         if(singleton == null){
             singleton = new GameFrame();
@@ -25,7 +28,8 @@ public class GameFrame extends JFrame {
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("X: " + e.getX() + ", Y: " + e.getY());
+                clickPositionX = e.getX();
+                clickPositionY = e.getY();
             }
 
             @Override
